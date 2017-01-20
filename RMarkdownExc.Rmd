@@ -1,0 +1,59 @@
+---
+title: "RMarkdownExc"
+author: "JerryFu"
+date: "20170120"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(plotly)
+
+```
+
+使用R Markdown的輸出練習
+
+序號|主題|使用資料
+---|---|---
+1|散佈圖|airquality.Ozone
+2|線圖|sunspot.year
+3|直方圖|airquality.Temp
+4|盒鬚圖|diamons_clarity_price
+5|長條圖|mpg.manufacturer
+
+## 1.散佈圖:臭氧濃度與風速
+
+```{r airquality_Ozone, echo=FALSE, warning=FALSE}
+ggplotly(ggplot(airquality,aes(x = Wind, y = Ozone, color = Month)) + geom_point() + ggtitle("臭氧濃度與風速") +  xlab("臭氧濃度") + ylab("風速") + geom_smooth(method = "loess"))
+
+```
+
+## 2.太陽黑子週期
+```{r sunspot.year, echo=FALSE, warning=FALSE}
+sunspot_year <- c(1700:1988)
+sunspot_amount <- c(sunspot.year)
+sunspot_cycle_df <- data.frame(sunspot_year,sunspot_amount)
+ggplotly(ggplot(sunspot_cycle_df,aes(x = sunspot_year, y = sunspot_amount)) + geom_line() + xlab("Year(A.D.)") + ylab("Sunspot Number"))
+
+```
+
+## 3.直方圖:空氣品質(溫度)5~9月
+```{r airquality_Temp, echo=FALSE, warning=FALSE, message=FALSE}
+ggplotly(ggplot(airquality, aes(x = Temp)) + geom_histogram() + xlab("Tempture") +facet_wrap(~ Month))
+
+```
+
+## 4.盒鬚圖:鑽石淨度與售價
+```{r diamons_clarity_price, echo=FALSE, warning=FALSE, message=FALSE}
+ggplotly(ggplot(diamonds, aes(x = clarity, y = price)) + geom_boxplot())
+
+```
+
+## 5.直方圖：汽車品牌與種類生產量
+```{r mpg_manufacturer_class, echo=FALSE, warning=FALSE, message=FALSE}
+ggplotly(ggplot(mpg,aes(x = manufacturer))+ geom_bar(aes(fill = class)) + coord_flip())
+```
+
+
