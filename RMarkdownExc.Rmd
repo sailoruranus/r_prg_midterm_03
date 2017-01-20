@@ -1,7 +1,7 @@
 ---
 title: "RMarkdownExc"
 author: "JerryFu"
-date: "20170120"
+date: "20170120"
 output: html_document
 ---
 
@@ -17,11 +17,11 @@ library(plotly)
 
 序號|主題|使用資料
 ---|---|---
-1|散佈圖|airquality.Ozone
-2|線圖|sunspot.year
+1|散佈圖|airquality.Ozone
+2|線圖|sunspot.year
 3|直方圖|airquality.Temp
-4|盒鬚圖|diamons_clarity_price
-5|長條圖|mpg.manufacturer
+4|盒鬚圖|diamons_clarity_price
+5|長條圖|mpg.manufacturer
 
 ## 1.散佈圖:臭氧濃度與風速
 
